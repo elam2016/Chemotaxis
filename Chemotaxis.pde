@@ -1,9 +1,9 @@
-int bacX, bacY, bacSize;
+int bacSize;
 int i = ((int)(Math.random()*2));
+//, bac2;
 Bacteria [] colony = new Bacteria[50];
 int screenSize = 300;
-color bacColor = color(((int)(Math.random()*100) + 125), ((int)(Math.random()*100) + 125), ((int)(Math.random()*100) + 125));
-Bacteria bac1 = new Bacteria(bacColor);
+Bacteria bac1 = new Bacteria();
 void setup()
 {
 	size(screenSize, screenSize);
@@ -11,7 +11,7 @@ void setup()
 	//bac2 = new Bacteria(screenSize/2, screenSize/2, bacColor);
 	for (int i = 0; i < colony.length; i++)
 	{
-		colony[i] = new Bacteria (bacColor);
+		colony[i] = new Bacteria ();
 	}
 }
 void draw()
@@ -33,12 +33,13 @@ void mouseClicked()
 }
 class Bacteria
 {
-	
-	Bacteria(int colour)
+	int bacX, bacY;
+	color bacColor = color(((int)(Math.random()*100) + 125), ((int)(Math.random()*100) + 125), ((int)(Math.random()*100) + 125));
+	Bacteria()
 	{
 		bacX = screenSize/2;
 		bacY = screenSize/2;
-		bacColor = colour;
+		//color bacColor = color(((int)(Math.random()*100) + 125), ((int)(Math.random()*100) + 125), ((int)(Math.random()*100) + 125));;
 	}
 	void move()
 	{
