@@ -7,7 +7,8 @@ void setup()
 {
 	size(screenSize, screenSize);
 	bacSize = 10;
-	
+	for(int c = 0; c < colony.length; c++)
+    		colony[c] = new Mover();
 }
 void draw()
 {
