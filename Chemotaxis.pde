@@ -7,20 +7,18 @@ void setup()
 {
 	size(screenSize, screenSize);
 	bacSize = 10;
-	for(int c = 0; c < colony.length; c++)
-    		colony[c] = new Mover();
+	for (int c = 0; c < colony.length; c++)
+		colony[c] = new Bacteria();
 }
 void draw()
 {
 	background(0);
-	bac1.magnify();
-	bac1.show();
-	bac1.move();
 	for (int i = 0; i < colony.length; i++)
 	{
 		int bacShape = ((int)(Math.random()*2));
 		colony[i].move();
 		colony[i].show();
+		colony[i].magnify();
 	}
 }
 void mouseClicked()
@@ -51,7 +49,7 @@ class Bacteria
 	}
 	void magnify()
 	{
-		fill(255, 255, 255, 60);
+		fill(255, 255, 255, 1);
 		ellipse(mouseX, mouseY, bacSize*20, bacSize*20);
 		if(bacX == mouseX + bacSize*20 && bacY == mouseY + bacSize*20)
 			bacSize *= 3;
