@@ -2,7 +2,9 @@ int bacSize;
 int bacShape;
 Bacteria [] colony = new Bacteria[50];
 int screenSize = 500;
-Bacteria bac1 = new Bacteria();
+Food food1 = new Food(mouseX, mouseY);
+boolean foodPlace = false;
+color foodColor = color(((int)(Math.random()*100) + 75), ((int)(Math.random()*100) + 50), 0);
 void setup()
 {
 	size(screenSize, screenSize);
@@ -20,15 +22,18 @@ void draw()
 		colony[i].show();
 		colony[i].magnify();
 	}
+	if(foodPlace)
+		fill(foodColor);
+		ellipse(mouseX, mouseY, bacSize, bacSize);
 }
 void mouseClicked()
 {
-	//bac1.newFoodLocation();
+	foodPlace = true;
 }
 class Bacteria
 {
 	int bacX, bacY;
-	color bacColor = color(((int)(Math.random()*100) + 125), ((int)(Math.random()*100) + 125), ((int)(Math.random()*100) + 125));
+	color bacColor = color(0, ((int)(Math.random()*100) + 75), ((int)(Math.random()*100) + 50));
 	Bacteria()
 	{
 		bacX = ((int)(Math.random()*screenSize) + 1);
@@ -55,5 +60,24 @@ class Bacteria
 			bacSize *= 3;
 		else
 			bacSize = 10;
+	}
+}
+class Food
+{
+	int foodX, foodY;
+	Food(int x, int y)
+	{
+		foodX = x;
+		foodY = y;
+	}
+	
+	void show()
+	{
+		fill(foodColor);
+		//ellipse(mouseX, mouseY, bacSize, bacSize);
+		//if()
+		//{
+		//	fill(0);
+		//}
 	}
 }
