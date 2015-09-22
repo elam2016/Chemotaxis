@@ -25,7 +25,7 @@ void draw()
 	if(foodPlace)
 	{
 		fill(foodColor);
-		ellipse(mouseX, mouseY, bacSize, bacSize);
+		ellipse(mouseX, mouseY, bacSize + 10, bacSize + 10);
 	}	
 }
 void mousePressed()
