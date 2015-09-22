@@ -10,6 +10,7 @@ void setup()
 	bacSize = 10;
 	for (int c = 0; c < colony.length; c++)
 		colony[c] = new Bacteria();
+	frameRate(20);
 }
 void draw()
 {
@@ -51,8 +52,38 @@ class Bacteria
 		if(foodPlace)
 		{
 			if(bacX < mouseX && bacY < mouseY)
+			{
 				bacX = bacX + ((int)(Math.random()*5) - 1);
 				bacY = bacY + ((int)(Math.random()*5) - 1);
+			} else if(bacX > mouseX && bacY > mouseY)
+			{
+				bacX = bacX + ((int)(Math.random()*1) - 1);
+				bacY = bacY + ((int)(Math.random()*1) - 1);
+			} else if(bacX < mouseX && bacY > mouseY)
+			{
+				bacX = bacX + ((int)(Math.random()*5) - 1);
+				bacY = bacY + ((int)(Math.random()*1) - 1);
+			}  else if(bacX > mouseX && bacY < mouseY)
+			{
+				bacX = bacX + ((int)(Math.random()*1) - 1);
+				bacY = bacY + ((int)(Math.random()*5) - 1);
+			}
+		}
+		if(bacX > screenSize - 50)
+		{
+			bacX = bacX + ((int)(Math.random()*1) - 1);
+		}
+		if(bacX < -screenSize - 50)
+		{
+			bacX = bacX + ((int)(Math.random()*5) - 1);
+		}
+		if(bacY > screenSize - 50)
+		{
+			bacY = bacY + ((int)(Math.random()*1) - 1);
+		}
+		if(bacY < -screenSize - 50)
+		{
+			bacY = bacY + ((int)(Math.random()*5) - 1);
 		}
 	}
 	void show()
