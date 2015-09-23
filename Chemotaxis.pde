@@ -10,7 +10,6 @@ void setup()
 	bacSize = 10;
 	for (int c = 0; c < colony.length; c++)
 		colony[c] = new Bacteria();
-	println(screenSize/5);
 }
 void draw()
 {
