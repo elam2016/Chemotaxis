@@ -1,26 +1,26 @@
 int bacSize;
 int bacShape;
-Bacteria [] colony = new Bacteria[50];
-int screenSize = 500;
-boolean foodPlace = false;
+int screenSize = 700;
+Bacteria [] colony = new Bacteria[screenSize/5];
 color foodColor = color(((int)(Math.random()*100) + 75), ((int)(Math.random()*50) + 50), 0);
+boolean foodPlace = false;
 void setup()
 {
 	size(screenSize, screenSize);
 	bacSize = 10;
 	for (int c = 0; c < colony.length; c++)
 		colony[c] = new Bacteria();
-	frameRate(20);
+	println(screenSize/5);
 }
 void draw()
 {
-	background(0);
+	fill(0, 0, 0, 20);
+	rect(0, 0, screenSize, screenSize);
 	for (int i = 0; i < colony.length; i++)
 	{
-		int bacShape = ((int)(Math.random()*2));
+		bacShape = ((int)(Math.random()*2));
 		colony[i].move();
 		colony[i].show();
-		colony[i].magnify();
 	}
 	if(foodPlace)
 	{
@@ -30,6 +30,7 @@ void draw()
 }
 void mousePressed()
 {
+	foodColor = color(((int)(Math.random()*100) + 75), ((int)(Math.random()*50) + 50), 0);
 	foodPlace = true;
 }
 void mouseReleased()
@@ -89,18 +90,10 @@ class Bacteria
 	void show()
 	{
 		fill(bacColor);
+		noStroke();
 		if(bacShape == 1)
-			ellipse(bacX, bacY, bacSize, bacSize);
+			ellipse(bacX + bacSize/2, bacY + bacSize/2, bacSize, bacSize);
 		else
 			rect(bacX, bacY, bacSize, bacSize);
-	}
-	void magnify()
-	{
-		fill(255, 255, 255, 1);
-		ellipse(mouseX, mouseY, bacSize*20, bacSize*20);
-		if(bacX == mouseX + bacSize*20 && bacY == mouseY + bacSize*20)
-			bacSize *= 3;
-		else
-			bacSize = 10;
 	}
 }
